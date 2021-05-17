@@ -8,13 +8,11 @@ function solve(input) {
     let days = 0;
     for (let i = 0; i < input.length; i++) {
         days++
+        let goldToday = input[i]; 
         if (days % 3 === 0) {
-            let goldToday = input[i] - (input[i] * 0.30)
-            totalMoney += (goldToday * gold)
-        } else {
-            totalMoney += (input[i] * gold)
+            goldToday = goldToday * 0.70
         }
-        totalMoney = Number(totalMoney.toFixed(2))
+        totalMoney += (goldToday * gold);
         if (totalMoney >= bitcoinPrice) {
             bitcoins += (Math.floor(totalMoney / bitcoinPrice))
             totalMoney = totalMoney % bitcoinPrice;
@@ -30,4 +28,4 @@ function solve(input) {
     }
     console.log(`Left money: ${totalMoney.toFixed(2)} lv.`);
 }
-solve([0.01, 5000, 1])
+solve([100, 200, 300]);
