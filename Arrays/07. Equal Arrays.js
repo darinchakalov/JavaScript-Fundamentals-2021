@@ -9,7 +9,6 @@ function solve(arr1, arr2) {
             different = true;
             break;
         }
-
     }
     if (different) {
         console.log(`Arrays are not identical. Found difference at ${diffAt} index`);
