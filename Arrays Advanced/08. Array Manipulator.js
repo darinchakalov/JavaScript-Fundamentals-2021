@@ -42,7 +42,8 @@ function solve(numbers, strings) {
         }
 
     }
-    console.log(`[ ${numbers.join(', ')} ]`);
+    console.log('[ ' + numbers.join(', ') + ' ]');
+    //console.log(`[ ${numbers.join(', ')} ]`);
 
     function add(num, index) {
         numbers.splice(index, 0, num)
@@ -58,11 +59,15 @@ function solve(numbers, strings) {
     function sum() {
         let result = []
         for (let i = 0; i < numbers.length; i+=2) {
-            result.push(numbers[i]+numbers[i+1])
+            if (numbers[i+1] === undefined) {
+                result.push(numbers[i])
+            } else {
+                result.push(numbers[i]+numbers[i+1])
+            }
         }
         numbers = result;
     }
 
 }
-solve([1,2,3,4,5,6],["addMany 5 9 8 7 6 5", "contains 15", "remove 3", "shift 1", "print"])
-//solve([1, 2, 4, 5, 6, 7], ['addMany 1 8 12 -5', 'contains 1', 'contains 3', 'print'])
+//solve([1,2,3,4,5,6,7],["addMany 5 9 8 7 6 5", "contains 15", "remove 3", "shift 1", "print"])
+solve([1, 2, 4, 5, 6, 7], ['addMany 1 8 12 -5', 'contains 1', 'contains 3', 'sumPairs', 'print'])
