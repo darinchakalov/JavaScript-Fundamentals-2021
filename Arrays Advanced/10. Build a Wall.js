@@ -1,33 +1,32 @@
 function solve(input) {
     let wall = input.map(Number);
     let cement = 0;
-    let dayCement = 0;
-    let firstLine = []
-    while (wall.length !== 0) {
-        wall.forEach(element => {
-            check(element)
-        });
-        if (dayCement !== 0) {
-            firstLine.push(dayCement)
+    let initalCheck = wall.filter(function (e) {
+        return e !== 30
+    })
+    let result = []
+    wall = initalCheck;
+
+    let crews = wall.length;
+    while (crews !== 0) {
+        let dayCement = 0;
+        for (let i = 0; i < wall.length; i++) {
+            if (wall[i] < 30) {
+                wall[i]++;
+                dayCement += 195;
+                cement += 195
+                if (wall[i] === 30) {
+                    crews--;
+                }
+            } 
         }
-        dayCement = 0;
+        result.push(dayCement);
     }
-    
-    console.log(firstLine.join(', '));
+
+
+    console.log(result.join(', '));
     console.log(`${cement * 1900} pesos`);
 
-
-    function check(el) {
-        if (el < 30) {
-            el++;
-            cement += 195;
-            dayCement += 195;
-        } else {
-            let index = wall.indexOf(el)
-            wall.splice(index, 1)
-        }
-    }
-
 }
-//solve([21, 25, 28])
+solve([21, 25, 28])
 solve([17, 22, 17, 19, 17])
