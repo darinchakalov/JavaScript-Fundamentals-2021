@@ -1,5 +1,12 @@
-function test(arr) {
-    let exist = arr.indexOf(5)
-    console.log(exist);
+function test(num) {
+    let sum =0
+    for (let i = 1; i <= num; i++) {
+        sum +=i;        
+    }
+    return sum
 }
-test([1,2,3,4])
+test(5)
+
+
+
+
