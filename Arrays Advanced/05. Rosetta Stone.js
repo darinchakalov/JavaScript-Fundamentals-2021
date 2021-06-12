@@ -48,94 +48,16 @@ function solve(input) {
     console.log(printLine);
     function printLetter(num) {
         let correctNum = 0
-            while (num > 26) {
-                num -= 27
-            }
-            correctNum = num
 
-        switch (correctNum) {
-            case 0:
-                printLine += ' '
-                break;
-            case 1:
-                printLine += 'A'
-                break;
-            case 2:
-                printLine += 'B'
-                break;
-            case 3:
-                printLine += 'C'
-                break;
-            case 4:
-                printLine += 'D'
-                break;
-            case 5:
-                printLine += 'E'
-                break;
-            case 6:
-                printLine += 'F'
-                break;
-            case 7:
-                printLine += 'G'
-                break;
-            case 8:
-                printLine += 'H'
-                break;
-            case 9:
-                printLine += 'I'
-                break;
-            case 10:
-                printLine += 'J'
-                break;
-            case 11:
-                printLine += 'K'
-                break;
-            case 12:
-                printLine += 'L'
-                break;
-            case 13:
-                printLine += 'M'
-                break;
-            case 14:
-                printLine += 'N'
-                break;
-            case 15:
-                printLine += 'O'
-                break;
-            case 16:
-                printLine += 'P'
-                break;
-            case 17:
-                printLine += 'Q'
-                break;
-            case 18:
-                printLine += 'R'
-                break;
-            case 19:
-                printLine += 'S'
-                break;
-            case 20:
-                printLine += 'T'
-                break;
-            case 21:
-                printLine += 'U'
-                break;
-            case 22:
-                printLine += 'V'
-                break;
-            case 23:
-                printLine += 'W'
-                break;
-            case 24:
-                printLine += 'X'
-                break;
-            case 25:
-                printLine += 'Y'
-                break;
-            case 26:
-                printLine += 'Z'
-                break;
+        while (num > 26) {
+            num -= 27
         }
+        if (num !== 0) {
+            printLine += String.fromCharCode(num + 64)
+        } else {
+            printLine += ' '
+        }
+
         return printLine
     }
 }
