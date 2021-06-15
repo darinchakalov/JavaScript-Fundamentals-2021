@@ -1,11 +1,15 @@
-function test(num) {
-    let sum =0
-    for (let i = 1; i <= num; i++) {
-        sum +=i;        
+function test() {
+    let num = 1;
+
+    increase(num)
+    function increase(num) {
+        num++
+        return num;
     }
-    return sum
+    console.log(num);
+
 }
-test(5)
+test()
 
 
 
