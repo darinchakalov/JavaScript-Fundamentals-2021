@@ -1,13 +1,7 @@
 function test() {
-    let num = 1;
-
-    increase(num)
-    function increase(num) {
-        num++
-        return num;
-    }
-    console.log(num);
-
+    let first = {firstOne: {firstOneOne: 'One', firstOneTwo: 'Two'}, 
+    secondOne: {secondOneOne: 'Three', secondOneTwo: 'Four'}};
+    console.log(first.firstOne.firstOneOne);
 }
 test()
 
