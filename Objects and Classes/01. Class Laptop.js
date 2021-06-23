@@ -14,7 +14,11 @@ function solve() {
             return (this.isOn = false);
         }
         showInfo() {
-            return JSON.stringify(info);
+            return JSON.stringify({
+                producer: this.info.producer,
+                age: this.info.age,
+                brand: this.info.brand,
+            });
         }
         get price() {
             return (800 - (this.info.age * 2) + (this.quality * 0.5));

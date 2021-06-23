@@ -1,23 +1,28 @@
-function solve(arr) {
-    class System {
-        constructor(systemName, componentName, subcomponentName) {
-            this.systemName = systemName;
-            this.componentName = componentName;
-            this.subcomponentName = subcomponentName;
+function solve(input) {
+    let register = {};
+    for (const line of input) {
+        let [systemName, componentName, subcomponentName] = line.split(" | ");
+        if (!register.hasOwnProperty(systemName)) {
+            register[systemName] = {};
         }
-        componentsCount = 0;
+        if (!register[systemName].hasOwnProperty(componentName)) {
+            register[systemName][componentName] = [];
+        }
+        register[systemName][componentName].push(subcomponentName);
     }
-    let list = [];
-    arr.forEach((element) => {
-        let [systemName, componentName, subcomponentName] = element.split(" | ");
-        let el = new System(systemName, componentName, subcomponentName);
-        list.push(el);
+    let sortedKeys = Object.keys(register).sort((a, b) =>
+        Object.keys(register[b]).length - Object.keys(register[a]).length || a.localeCompare(b));
+    sortedKeys.forEach(el => {
+        console.log(el);
+        let sortedSubKeys = Object.keys(register[el]).sort((a, b) =>
+        Object.keys(register[el][b]).length - Object.keys(register[el][a]).length);
+        sortedSubKeys.forEach(sub => {
+            console.log(`|||${sub}`);
+            register[el][sub].forEach(subSubEl => {
+                console.log(`||||||${subSubEl}`);
+            });
+        });
     });
-    let count = {}
-    list.forEach(function(item) {
-        count[item.componentName] ? count[item.componentName]++ : count[item.componentName] = 1
-    });
-    console.log(count);
 }
 solve([
     "SULS | Main Site | Home Page",
