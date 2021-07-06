@@ -9,10 +9,10 @@
             "request": "launch",
             "name": "Debug File",
             //"name": "Launch Program",
+            "program": "${file}",
             "skipFiles": [
                 "<node_internals>/**"
-            ],
-            "program": "${file}"
+            ]
         }
     ]
 }
