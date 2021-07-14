@@ -19,9 +19,13 @@ function solve(input) {
         } else {
             let [name1, name2] = line.split(" vs ");
             if (arenaTier.hasOwnProperty(name1) && arenaTier.hasOwnProperty(name2)) {
-                //console.log('true', name1, arenaTier[name1], name2, arenaTier[name2]);
                 if (findCommonTechnuques(name1, name2)) {
-                    
+                    let commonTechnique = findTheCommonTech(name1, name2);
+                    if (arenaTier[name1][commonTechnique] > arenaTier[name2][commonTechnique]) {
+                        delete arenaTier[name2];
+                    } else {
+                        delete arenaTier[name1];
+                    }
                 }
             }
         }
@@ -57,6 +61,19 @@ function solve(input) {
             for (const tech2 of Object.keys(obj2)) {
                 if (tech1 == tech2) {
                     common = true;
+                }
+            }
+        }
+        return common;
+    }
+    function findTheCommonTech(name1, name2) {
+        let obj1 = arenaTier[name1];
+        let obj2 = arenaTier[name2];
+        let common;
+        for (const tech1 of Object.keys(obj1)) {
+            for (const tech2 of Object.keys(obj2)) {
+                if (tech1 == tech2) {
+                    common = tech1;
                 }
             }
         }
