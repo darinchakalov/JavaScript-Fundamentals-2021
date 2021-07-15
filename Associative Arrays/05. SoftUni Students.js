@@ -1,22 +1,38 @@
 function solve(input) {
     let courses = {};
-    let students = {}
     for (const line of input) {
         if (line.includes(": ")) {
-            let [course, capcity] = line.split(": ");
+            let [course, capacity] = line.split(": ");
             if (!courses.hasOwnProperty(course)) {
-                courses[course] = Number(capcity);
+                courses[course] = {}
+                courses[course]["capacity"] = Number(capacity);
             } else {
-                courses[course] += Number(capcity);
+                courses[course]["capacity"] += Number(capacity);
             }
         } else {
-            let lineArr = line.split(' ')
-            lineArr.splice(lineArr.indexOf('with'), 1)
-            lineArr.splice(lineArr.indexOf('email'), 1)
-            lineArr.splice(lineArr.indexOf('joins'), 1)
-            let [userInfo, email, course] = [...lineArr]
-            let [user, credits] = userInfo.split('[')
-            
+            let lineArr = line.split(" ");
+            lineArr.splice(lineArr.indexOf("with"), 1);
+            lineArr.splice(lineArr.indexOf("email"), 1);
+            lineArr.splice(lineArr.indexOf("joins"), 1);
+            let [userInfo, email, course] = [...lineArr];
+            let [user, credit] = userInfo.split("[");
+            let credits = credit.substring(0, credit.length - 1);
+            if (courses.hasOwnProperty(course)) {
+                if (!courses[course].hasOwnProperty(credits)) {
+                    if (courses[course]["capacity"] > 0) {
+                        courses[course][credits] = {};
+                        courses[course][credits][user] = email;
+                        courses[course]["capacity"] -= 1;
+                    }
+                }
+            }
+        }
+    }
+    for (const [course,info] of Object.entries(courses).sort((a,b) => Object.keys(b[1]).length - Object.keys(a[1]).length)) {
+        console.log(`${course}: ${courses[course]['capacity']} places left`);
+        delete courses[course]['capacity']
+        for (const [k,v] of Object.entries(info).sort((a,b) => b[0] - a[0])) {
+            console.log(`--- ${k}: ${Object.keys(v)}, ${Object.values(v)}`);
         }
     }
 }
