@@ -1,5 +1,24 @@
 function solve(input) {
-    
+    let courses = {};
+    let students = {}
+    for (const line of input) {
+        if (line.includes(": ")) {
+            let [course, capcity] = line.split(": ");
+            if (!courses.hasOwnProperty(course)) {
+                courses[course] = Number(capcity);
+            } else {
+                courses[course] += Number(capcity);
+            }
+        } else {
+            let lineArr = line.split(' ')
+            lineArr.splice(lineArr.indexOf('with'), 1)
+            lineArr.splice(lineArr.indexOf('email'), 1)
+            lineArr.splice(lineArr.indexOf('joins'), 1)
+            let [userInfo, email, course] = [...lineArr]
+            let [user, credits] = userInfo.split('[')
+            
+        }
+    }
 }
 solve([
     "JavaBasics: 2",
