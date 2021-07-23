@@ -1,12 +1,16 @@
 function solve(input) {
-    let text = input[0]
-    let textArr = input[0].split(' ')
-    console.log(textArr);
-    let wordsArr = input[1]
-    for (const w of textArr) {
-        for (const wo of wordsArr) {
-            if (w === '_'.repeat(wo.length)) {
-                text = text.replace(w, wo)
+    let text = input[0];
+    let textArr = input[0].split(" ");
+    let wordsArr = input[1];
+    for (let word of textArr) {
+        for (let wordToReplace of wordsArr) {
+            if (word[word.length-1] === '!' ||
+            word[word.length-1] === '.' || 
+            word[word.length-1] === ',') {
+             word = word.substring(0, word.length-1)   
+            }
+            if (word === "_".repeat(wordToReplace.length)) {
+                text = text.replace(word, wordToReplace);
             }
         }
     }
