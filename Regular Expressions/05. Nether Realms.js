@@ -1,5 +1,5 @@
-function solve(input) {
-    let names = input[0].split(/,\s+/g);
+function solve([input]) {
+    let names = input.split(/[, ]+/g);
     let result = {};
     let healthRegex = /[^\d\+\-\/\*\.]/g;
     let damageRegex = /[-+]?\d+(.\d+)?[*]*?/g;
@@ -36,6 +36,6 @@ function solve(input) {
         console.log(`${key} - ${value["health"]} health, ${value["damage"]} damage`);
     }
 }
-//solve("M3ph-0.5s-0.5t0.0**");
-solve(["M3ph1st0**, Azazel"]);
+solve(["M3ph-0.5s-0.5t0.0**"]);
+solve(["M3ph1st0**, Az12.5*azel"]);
 solve(["Gos/ho,   dar1n, test"]);
