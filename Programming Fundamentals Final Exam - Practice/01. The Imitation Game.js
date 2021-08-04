@@ -11,11 +11,14 @@ function solve(input) {
                     message += move;
                     break;
                 case "Insert":
-                    message = insert(message, Number(first), second)
+                    message = insert(message, Number(first), second);
                     break;
                 case "ChangeAll":
-                    let rgx = new RegExp(first, 'g')
-                    message = message.replace(rgx, 'l')
+                    while (message.includes(first)) {
+                        message = message.replace(first, second);
+                    }
+                    //let rgx = new RegExp(first, 'g')
+                    //message = message.replace(rgx, 'l')
                     break;
             }
         }
@@ -29,10 +32,5 @@ function solve(input) {
     }
 }
 //solve(["zzHe", "ChangeAll|z|l", "Insert|2|o", "Move|3", "Decode"]);
-solve([
-    'owyouh',
-    'Move|2',
-    'Move|3',
-    'Insert|',
-    'Insert|9|?',
-    'Decode'])
+solve(["zzHe", "ChangeAll|z|l", "Insert|2|o", "Move|3", "Decode"]);
+solve(["owyouh", "Move|2", "Move|3", "Insert|3|are", "Insert|9|?", "Decode"]);
